@@ -1,0 +1,17 @@
+h1 {
+    background: linear-gradient(to right,#e2ccad,white);
+    border: solid 1px black;
+}
+h2 {
+    font-style: italic;
+}
+h3 {
+    text-decoration: underline;
+    background: linear-gradient(to right,rgb(106,228,228)10%,white 90%)
+}
+h3 + p {
+    background-color:white;
+}
+body {
+    background-color:antiquewhite;
+}
