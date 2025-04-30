@@ -1,0 +1,18 @@
+h1 {
+    font-style: italic;
+    border: 1px solid black;
+    background-color:lightblue;
+    height: 50px;
+    width: 170px;
+}
+p + h3 {
+    text-decoration: underline;
+}
+.box {
+    border: 1px solid black;
+    border-top-right-radius: 10% 5%;
+    border-bottom-right-radius: 10% 5%;
+    background-color: blanchedalmond;
+    margin:1px;
+    width: 700px;
+}
