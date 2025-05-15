@@ -239,3 +239,11 @@ let data = {
   }
 };
 
+function search() {
+  let i = document.querySelector('input[name="in"]');
+  let log = ('検索キー:'+i.value);
+  console.log(log);
+}
+let zz = document.querySelector('button#push')
+zz.addEventListener('click',search);
+
