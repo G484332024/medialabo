@@ -1,12 +1,53 @@
 
 // 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
-  console.log(data.results.shop[0].access);
+  for(let aiu = 0;aiu<=1;aiu++) {
+  console.log(data.results.shop[aiu].access);
+  console.log(data.results.shop[aiu].address);
+  console.log(data.results.shop[aiu].budget.average);
+  console.log(data.results.shop[aiu].budget.name);
+  console.log(data.results.shop[aiu].genre.name);
+  console.log(data.results.shop[aiu].catch);
+  console.log(data.results.shop[aiu].charter);
+  console.log(data.results.shop[aiu].child);
+  console.log(data.results.shop[aiu].close);
+  console.log(data.results.shop[aiu].logo_image);
+  console.log(data.results.shop[aiu].mobile_access);
+  console.log(data.results.shop[aiu].open);
+  console.log(data.results.shop[aiu].other_memo);
+  console.log(data.results.shop[aiu].private_room);
+  console.log(data.results.shop[aiu].wedding);
+  }
 }
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  let body = document.querySelector('body');
+  let d = document.createElement('div');
+  let div = document.querySelector('div');
+  body.insertAdjacentElement('beforeend',div);
+  //bodyの中にdivを入れた
+  let text = document.createElement('h3');
+  text.textContent = data.results.shop[0].name;
+  div.insertAdjacentElement('beforeend',text);
+  //店の名前書いた
+  text = document.createElement('h3');
+  text.textContent = '住所';
+  div.insertAdjacentElement('beforeend',text);
+  text = document.createElement('ul');
+  div.insertAdjacentElement('beforeend',text);
+  let text1 = document.createElement('li');
+  text.insertAdjacentElement('beforeend',text1);
+  text1.textContent = data.results.shop[0].address;
 
+  text = document.createElement('h3');
+  text.textContent = '最寄り駅';
+  div.insertAdjacentElement('beforeend',text);
+  text = document.createElement('ul');
+  div.insertAdjacentElement('beforeend',text);
+  text1 = document.createElement('li');
+  text.insertAdjacentElement('beforeend',text1);
+  text1.textContent = data.results.shop[0].mobile_access;
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
