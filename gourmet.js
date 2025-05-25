@@ -22,15 +22,27 @@ function print(data) {
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  let re = document.createElement('div');
+  re.id = 'result';
   let body = document.querySelector('body');
-  let d = document.createElement('div');
-  let div = document.querySelector('div');
+  body.insertAdjacentElement('beforeend',re);
+  let h = document.createElement('p');
+  h.textContent = '２件がヒットしました.';
+  body.insertAdjacentElement('beforeend',h);
+  for(let i = 0;i<=1;i++) {
+  let div = document.createElement('div');
+  div.id = 'di';
   body.insertAdjacentElement('beforeend',div);
   //bodyの中にdivを入れた
   let text = document.createElement('h3');
-  text.textContent = data.results.shop[0].name;
+  text.textContent = data.results.shop[i].name;
   div.insertAdjacentElement('beforeend',text);
   //店の名前書いた
+
+  text = document.createElement('p');
+  text.textContent = data.results.shop[i].genre.name;
+  div.insertAdjacentElement('beforeend',text);
+
   text = document.createElement('h3');
   text.textContent = '住所';
   div.insertAdjacentElement('beforeend',text);
@@ -38,7 +50,7 @@ function printDom(data) {
   div.insertAdjacentElement('beforeend',text);
   let text1 = document.createElement('li');
   text.insertAdjacentElement('beforeend',text1);
-  text1.textContent = data.results.shop[0].address;
+  text1.textContent = data.results.shop[i].address;
 
   text = document.createElement('h3');
   text.textContent = '最寄り駅';
@@ -47,7 +59,46 @@ function printDom(data) {
   div.insertAdjacentElement('beforeend',text);
   text1 = document.createElement('li');
   text.insertAdjacentElement('beforeend',text1);
-  text1.textContent = data.results.shop[0].mobile_access;
+  text1.textContent = data.results.shop[i].mobile_access;
+
+  text = document.createElement('h3');
+  text.textContent = '営業時間';
+  div.insertAdjacentElement('beforeend',text);
+  text = document.createElement('ul');
+  div.insertAdjacentElement('beforeend',text);
+  text1 = document.createElement('li');
+  text.insertAdjacentElement('beforeend',text1);
+  text1.textContent = data.results.shop[i].open;
+
+  text = document.createElement('p');
+  text.textContent = '1人当たり'+data.results.shop[i].budget.name+','+data.results.shop[i].budget.average;
+  div.insertAdjacentElement('beforeend',text);
+
+  text = document.createElement('p');
+  text.textContent = data.results.shop[i].catch;
+  div.insertAdjacentElement('beforeend',text);
+
+  text = document.createElement('p');
+  text.textContent = data.results.shop[i].charter;
+  div.insertAdjacentElement('beforeend',text);
+
+  text = document.createElement('p');
+  text.textContent = data.results.shop[i].child;
+  div.insertAdjacentElement('beforeend',text);
+
+  text = document.createElement('p');
+  text.textContent = '予約等は↓のリンクから';
+  div.insertAdjacentElement('beforeend',text);
+
+  let l = document.createElement('a');
+  l.setAttribute('href',data.results.shop[i].coupon_urls[i]);
+  l.textContent = 'URL';
+  div.insertAdjacentElement('beforeend',l);
+
+  let logo = document.createElement('img');
+  logo.setAttribute('src',data.results.shop[i].logo_image);
+  div.insertAdjacentElement('beforeend',logo);
+  }
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
@@ -281,6 +332,10 @@ let data = {
 };
 
 function search() {
+  let hit = document.createElement('p');
+  hit.textContent = '2件がヒットしました.';
+  let a = document.querySelector('p#kensaku');
+  a.insertAdjacentElement('beforeend',hit);
   let i = document.querySelector('input[name="in"]');
   let log = ('検索キー:'+i.value);
   console.log(log);
