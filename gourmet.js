@@ -34,13 +34,19 @@ function printDom(data) {
   div.id = 'di';
   body.insertAdjacentElement('beforeend',div);
   //bodyの中にdivを入れた
-  let text = document.createElement('h3');
+
+  let text = document.createElement('p');
+  text.textContent = i+1 + ' 件目';
+  div.insertAdjacentElement('beforebegin',text);
+
+  text = document.createElement('h3');
+  text.id = 'name';
   text.textContent = data.results.shop[i].name;
   div.insertAdjacentElement('beforeend',text);
   //店の名前書いた
 
   text = document.createElement('p');
-  text.textContent = data.results.shop[i].genre.name;
+  text.textContent = 'ジャンル: '+data.results.shop[i].genre.name;
   div.insertAdjacentElement('beforeend',text);
 
   text = document.createElement('h3');
