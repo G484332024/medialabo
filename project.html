@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>グルメ情報</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
         <script src="gourmet.js" defer></script>
         <link rel="stylesheet" href="project.css">
     </head>
@@ -11,6 +12,14 @@
         <h1>グルメ情報</h1>
         <p id="kensaku">
             <label id="l">検索キー:</label>
+            <label for="santaro">プルダウンメニュー</label>
+    <select name="santaro" id="santaro">
+        <option value="">三太郎の一人を選んでください</option>
+        <option value="momo">桃太郎</option>
+        <option value="kin">金太郎</option>
+        <option value="urashima">浦島太郎</option>
+    </select>
+    <button id="btn">コンソールに表示</button>
             <input type="search" id="a" name = "in">
             <button id="push">検索</button>
         </p>

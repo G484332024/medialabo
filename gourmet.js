@@ -20,19 +20,27 @@ function print(data) {
   }
 }
 
+
 // 課題5-1 の関数 printDom() はここに記述すること
+let c = 0;
 function printDom(data) {
-  let re = document.createElement('div');
+  if(c>0) {
+    let l = document.querySelector('div#result');
+  l.remove();
+  }
+  c = 1;
+  re = document.createElement('div');
   re.id = 'result';
   let body = document.querySelector('body');
   body.insertAdjacentElement('beforeend',re);
   let h = document.createElement('p');
-  h.textContent = '２件がヒットしました.';
-  body.insertAdjacentElement('beforeend',h);
-  for(let i = 0;i<=1;i++) {
-  let div = document.createElement('div');
+  h.textContent = data.results.shop.length+'件がヒットしました.';
+  re.insertAdjacentElement('beforeend',h);
+  
+  for(let i = 0;i<data.results.shop.length;i++) {
+    let div = document.createElement('div');
   div.id = 'di';
-  body.insertAdjacentElement('beforeend',div);
+  re.insertAdjacentElement('beforeend',div);
   //bodyの中にdivを入れた
 
   let text = document.createElement('p');
@@ -108,18 +116,61 @@ function printDom(data) {
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
-
+let b = document.querySelector('button#push');
+b.addEventListener('click',sendRequest);
 
 
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
+  let bu = document.querySelector('input[name="in"]');
+  let g;
+  if(bu.value==='居酒屋') {
+    g = "G001";
+  }else if(bu.value==="ダイニングバー・バル") {
+    g = "G002";
+  }else if(bu.value==="創作料理") {
+    g = "G003";
+  }else if(bu.value==="和食") {
+    g = "G004";
+  }else if(bu.value==="洋食") {
+    g = "G005";
+  }else if(bu.value==="イタリアン・フレンチ") {
+    g = "G006";
+  }else if(bu.value==="中華") {
+    g = "G007";
+  }else if(bu.value==="焼肉・ホルモン") {
+    g = "G008";
+  }else if(bu.value==="アジア・エスニック料理") {
+    g = "G009";
+  }else if(bu.value==="各国料理") {
+    g = "G010";
+  }else if(bu.value==="カラオケ・パーティ") {
+    g = "G011";
+  }else if(bu.value==="バー・カクテル") {
+    g = "G012";
+  }else if(bu.value==="ラーメン") {
+    g = "G013";
+  }else if(bu.value==="カフェ・スイーツ") {
+    g = "G014";
+  }else if(bu.value==="その他グルメ") {
+    g = "G015";
+  }else if(bu.value==="お好み焼き・もんじゃ") {
+    g = "G016";
+  }else if(bu.value==="韓国料理") {
+    g = "G017";
+  }
+  if(g==="G001"||g==="002"||g==="G003"||g==="G004"||g==="G005"||g==="G006"||g==="G007"||g==="G008"||g==="G009"||g==="G010"||g==="G011"||g==="G012"||g==="G013"||g==="G014"||g==="G015"||g==="G016"||g==="G017") {
+    let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/'+g+'.json';
 
+    axios.get(url).then(showResult).catch(showError).then(finish);
+  }
 }
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
-
+  let data = resp.data;
+printDom(data);
 }
 
 // 課題6-1: 通信エラーが発生した時の処理
@@ -337,7 +388,7 @@ let data = {
   }
 };
 
-function search() {
+/**function search() {
   let hit = document.createElement('p');
   hit.textContent = '2件がヒットしました.';
   let a = document.querySelector('p#kensaku');
@@ -348,4 +399,4 @@ function search() {
 }
 let zz = document.querySelector('button#push')
 zz.addEventListener('click',search);
-
+**/
