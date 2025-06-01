@@ -123,9 +123,9 @@ b.addEventListener('click',sendRequest);
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
-  let bu = document.querySelector('input[name="in"]');
-  let g;
-  if(bu.value==='居酒屋') {
+  //let bu = document.querySelector('input[name="in"]');
+  let g = document.querySelector('select');
+  /**if(bu.value==='居酒屋') {
     g = "G001";
   }else if(bu.value==="ダイニングバー・バル") {
     g = "G002";
@@ -160,8 +160,10 @@ function sendRequest() {
   }else if(bu.value==="韓国料理") {
     g = "G017";
   }
-  if(g==="G001"||g==="002"||g==="G003"||g==="G004"||g==="G005"||g==="G006"||g==="G007"||g==="G008"||g==="G009"||g==="G010"||g==="G011"||g==="G012"||g==="G013"||g==="G014"||g==="G015"||g==="G016"||g==="G017") {
-    let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/'+g+'.json';
+    **/
+  if(g.value==="null"/**g.value==="G001"||g.value==="002"||g.value==="G003"||g.value==="G004"||g.value==="G005"||g.value==="G006"||g.value==="G007"||g.value==="G008"||g.value==="G009"||g.value==="G010"||g.value==="G011"||g.value==="G012"||g.value==="G013"||g.value==="G014"||g.value==="G015"||g.value==="G016"||g.value==="G017"**/) {
+  }else{
+    let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/'+g.value+'.json';
 
     axios.get(url).then(showResult).catch(showError).then(finish);
   }
